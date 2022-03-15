@@ -1,12 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 import "./Subscription.css";
 import SubscriptionDate from "./SubscriptionDate";
 
 const Subscription = (props) => {
-  let title = props.title
+  const [title, setTitle] = useState(props.title)
   const changeTitle = (e) => {
-    title = 'change Title wrap'
-    console.log('onclick button')
+    setTitle('change title')
+    console.log('onclick button', title)
   }
   return (
     <div className="subscription">
