@@ -1,20 +1,37 @@
 import './FormSubscription.css'
 import { useState } from 'react';
 const FormSuscription = () => {
-    const [userTitle, setUserTitle] = useState("");
-    const [userDate, setUserDate] = useState("");
-    const [amoutn, SetAmount] = useState(""); 
+    // const [userTitle, setUserTitle] = useState("");
+    // const [userDate, setUserDate] = useState("");
+    // const [amoutn, SetAmount] = useState(""); 
+
+    const [form, setForm] = useState({userTitle:'', userDate:'', amoutn: ''})
     const titleOnChangeHandler = (events) =>{
-        setUserTitle(events.target.value)
-        console.log('onTitle change ', events.value, events.target.value, userTitle);
+        // setForm({...form,userTitle:events.target.value})
+        setForm = (prevState) => {
+            return {prevState, userTitle:events.target.value}
+        }
+        // setUserTitle(events.target.value)
+        console.log('Form', form);
     }
     const dateChangedHandler = (events) =>{
-        setUserDate(events.target.value)
-        console.log('==userDate--', userDate)
+        // setForm({...form,userDate:events.target.value})
+        setForm = (prevState) => {
+            return {prevState, userDate:events.target.value}
+        }
+        console.log('Form', form);
+        // setUserDate(events.target.value)
+        // setForm(events.target.value)
+        // console.log('==userDate--', userDate)
     }
     const amountChangedHandler = (events) => {
-        SetAmount(events.target.value);
-        console.log('==SetAmount--', amoutn)
+        // setForm({...form,amoutn:events.target.value})
+        setForm = (prevState) => {
+            return {prevState, amoutn:events.target.value}
+        }
+
+        // SetAmount(events.target.value);
+        // console.log('==SetAmount--', amoutn)
     }
     return(
         <form>
