@@ -3,6 +3,7 @@ import './App.css';
 import Subscription from './component/Subscription';
 import Container from './component/Container'
 import StudentDetails from './component/StudentDetails';
+import NewSubscription from './component/NewSubscription/NewSubscription';
 
 const App = () => {
   let subscriptions=[
@@ -28,6 +29,7 @@ const App = () => {
   return (
     
    <Container>
+     <NewSubscription/>
      <StudentDetails studentDetails = 'firstName'/>
         <Subscription date={subscriptions[0].date} title={subscriptions[0].title} amount={subscriptions[0].amount}/>
         <Subscription date={subscriptions[1].date} title={subscriptions[1].title} amount={subscriptions[1].amount}/>

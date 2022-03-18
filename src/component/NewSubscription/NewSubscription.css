@@ -1,0 +1,49 @@
+.new_subscription{
+    background-color: #1260b1;
+    padding: 1rem;
+    margin: 2rem auto;
+    width: 50rem;
+    max-width: 95%;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 1px 8px rgba(0, 0, 0.25);
+}
+.new_subscription button {
+    font: inherit;
+    cursor: pointer;
+    padding: 1rem 2rem;
+    border: 1px solid #084a8e;
+    background-color: #084a8e;
+    color: #fff;
+    border-radius: 12px;
+    margin-right: 1rem;
+}
+.new_subscription button:hover, .new_subscription button:active {
+    border-color: #084a8e;
+    background-color: #084a8e;
+
+}
+.new_subscription button.alternative {
+    color: #084a8e;
+    border-color: transparent;
+    background-color: transparent;
+}
+.new_subscription button.alternative:hover, .new_subscription button.alternative:active{
+    background-color: #1260ba;
+
+}
+.new_subscription_controls{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    text-align: left;
+
+}
+.new_subscription_control label{
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+.new_subscription_control input{
+}
