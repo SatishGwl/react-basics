@@ -52,18 +52,29 @@ const App = () => {
         onFilterChangeProps={filterChangeHandler}
         selectedFilter={filteredYear}
       />
+      {filteredSubscriptions.length===0 && <h3>No Data Found</h3>}
+      {filteredSubscriptions.length !== 0 && filteredSubscriptions.map((subscription) => (
+                <Subscription
+                  key={subscription.id}
+                  date={subscription.date}
+                  title={subscriptions.title}
+                  amount={subscriptions.amount}
+                />
+              ))}
+      {/* {filteredSubscriptions.length===0 ? <h3>'No data Found'</h3>:
+              filteredSubscriptions.map((subscription) => (
+                <Subscription
+                  key={subscription.id}
+                  date={subscription.date}
+                  title={subscriptions.title}
+                  amount={subscriptions.amount}
+                />
+              ))
+      } */}
       {/* <StudentDetails studentDetails="firstName" /> */}
       {/* {subscriptions.map(subscription =><Subscription date={subscription.date} title={subscription[0].title} amount={subscription[0].amount}
       />)} */}
 
-      {filteredSubscriptions.map((subscription) => (
-        <Subscription
-          key={subscription.id}
-          date={subscription.date}
-          title={subscriptions.title}
-          amount={subscriptions.amount}
-        />
-      ))}
       {/* <Subscription date={subscriptions[0].date} title={subscriptions[0].title} amount={subscriptions[0].amount}/>
         <Subscription date={subscriptions[1].date} title={subscriptions[1].title} amount={subscriptions[1].amount}/>
         <Subscription date={subscriptions[2].date} title={subscriptions[2].title} amount={subscriptions[2].amount}/> */}
