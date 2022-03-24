@@ -2,7 +2,7 @@ import "./App.css";
 // import Container from './templates/Container'
 import Subscription from "./component/Subscription";
 import Container from "./component/Container";
-import StudentDetails from "./component/StudentDetails";
+// import StudentDetails from "./component/StudentDetails";
 import NewSubscription from "./component/NewSubscription/NewSubscription";
 import Filter from "./component/NewSubscription/Filter";
 import { useState } from "react";
@@ -22,42 +22,46 @@ const INITIAL_SUBSCRIPTION = [
   },
   {
     id: "3",
-    date: new Date("2021", "09", "05"),
+    date: new Date("2019", "09", "05"),
     title: "Quarterly Subscription",
     amount: "425.50",
   },
 ];
 const App = () => {
   const [subscriptions, setSubscriptions] = useState(INITIAL_SUBSCRIPTION)
-  const [filterData, setFilterData] = useState("2022");
+  const [filteredYear, setFilteredYear] = useState("2020");
   const addSubscriptionHandler = (data) => {
-    console.log("===onAddSusbcription===", data, subscriptions);
     setSubscriptions(prevState=>{return [data, ...subscriptions]})
-    subscriptions.push(data);
+    console.log("===onAddSusbcription===", data, subscriptions);
+    // subscriptions.push(data);
   };
 
   const filterChangeHandler = (data) => {
     console.log("Filter Change Handler", data);
-    setFilterData(data);
+    setFilteredYear(data);
   };
+
+  const filteredSubscriptions = subscriptions.filter((item)=>{
+    return item.date.getFullYear().toString() === filteredYear;
+  })
   return (
     <Container>
       {/* <BookDetails/> */}
       <NewSubscription onAddSubscription={addSubscriptionHandler} />
       <Filter
         onFilterChangeProps={filterChangeHandler}
-        selectedFilter={filterData}
+        selectedFilter={filteredYear}
       />
-      <StudentDetails studentDetails="firstName" />
+      {/* <StudentDetails studentDetails="firstName" /> */}
       {/* {subscriptions.map(subscription =><Subscription date={subscription.date} title={subscription[0].title} amount={subscription[0].amount}
       />)} */}
 
-      {subscriptions.map((subscription) => (
+      {filteredSubscriptions.map((subscription) => (
         <Subscription
           key={subscription.id}
           date={subscription.date}
-          title={subscriptions[0].title}
-          amount={subscriptions[0].amount}
+          title={subscriptions.title}
+          amount={subscriptions.amount}
         />
       ))}
       {/* <Subscription date={subscriptions[0].date} title={subscriptions[0].title} amount={subscriptions[0].amount}/>
