@@ -1,10 +1,9 @@
 import "./FormSubscription.css";
 import { useState } from "react";
-const FormSuscription = () => {
-  const [form, setForm] = useState({ userTitle: "", userDate: "", userAmount: "" })
+const FormSuscription = (props) => {
+  const [form, setForm] = useState({ userTitle: "Enter User Title", userDate: "Enter User Date", userAmount: "Enter User Amount" })
   const titleChangedHandler = (events) => {
     setForm ((prevState) => {
-        
       return { ...prevState, userTitle:events.target.value }
     })
     console.log("======Title====", form);
@@ -26,6 +25,7 @@ const FormSuscription = () => {
   const submitHandler = (events) =>{
     events.preventDefault();
     const Subscription = {title:form.userTitle, amount:form.userAmount, date: new Date(form.userDate)}
+    props.onSave(Subscription)
     console.log('onsubmit Subscription ', Subscription);
 }
 
@@ -34,15 +34,15 @@ const FormSuscription = () => {
       <div className="new_subscription_controls">
         <div className="new_subscription_control">
           <label>Title</label>
-          <input type="text" onChange={titleChangedHandler}></input>
+          <input type="text" value={form.userTitle} onChange={titleChangedHandler}></input>
         </div>
         <div className="new_subscription_control">
           <label>Date</label>
-          <input type="date" onChange={dateChangedHandler}></input>
+          <input type="date" value={form.userDate} onChange={dateChangedHandler}></input>
         </div>
         <div className="new_subscription_control">
           <label>amount</label>
-          <input type="text" min="10" onChange={amountChangedHandler}></input>
+          <input type="text" min="10" value={form.userAmount} onChange={amountChangedHandler}></input>
         </div>
       </div>
       <div className="new_subscription_actions">
